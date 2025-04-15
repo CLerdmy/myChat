@@ -78,9 +78,13 @@ public class RoundedTextField extends JTextField {
     }
 
     private void showPlaceholder() {
-        setText(placeholder);
-        super.setForeground(getPlaceholderColor());
-        showingPlaceholder = true;
+        if (getText().isEmpty() && !showingPlaceholder) {
+            SwingUtilities.invokeLater(() -> {
+                setText(placeholder);
+                super.setForeground(getPlaceholderColor());
+                showingPlaceholder = true;
+            });
+        }
     }
 
     @Override

@@ -94,10 +94,14 @@ public class RoundedPasswordField extends JPasswordField {
     }
 
     private void showPlaceholder() {
-        setText(placeholder);
-        super.setEchoChar((char) 0);
-        super.setForeground(getPlaceholderColor());
-        showingPlaceholder = true;
+        if (getText().isEmpty() && !showingPlaceholder) {
+            SwingUtilities.invokeLater(() -> {
+                setText(placeholder);
+                super.setEchoChar((char) 0);
+                super.setForeground(getPlaceholderColor());
+                showingPlaceholder = true;
+            });
+        }
     }
 
     @Override
