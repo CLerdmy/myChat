@@ -13,6 +13,7 @@ public class GUIConstants {
     public static final int SQUARE = 40;
 
     public static final Font MAIN_FONT = new Font("Open Sans", Font.PLAIN, 14);
+    public static final Font MAIN_FONT_LARGE = new Font("Open Sans", Font.PLAIN, 18);
     public static final Font MAIN_FONT_BOLD = new Font("Open Sans", Font.BOLD, 14);
     public static final Font MAIN_FONT_BOLD_LARGE = new Font("Open Sans", Font.BOLD, 20);
     public static final Font TEST_FONT = new Font("Open Sans", Font.BOLD, 28);
@@ -23,5 +24,7 @@ public class GUIConstants {
     public static final Color BLACK = new Color(15, 15, 15);
     public static final Color ANOTHER_BLACK = new Color(20, 20, 20);
     public static final Color LIGHTER_BLACK = new Color(50, 50, 50);
+    public static final Color RED = new Color(200, 80, 80);
+    public static final Color GREEN = new Color(90, 160, 95);
 
 }
