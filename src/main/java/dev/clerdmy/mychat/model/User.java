@@ -1,7 +1,5 @@
 package dev.clerdmy.mychat.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,10 +9,8 @@ public class User {
     private String name;
     private String email;
     private String password;
-    private List<Post> posts;
-    private List<Comment> comments;
-    private List<Post> likes;
-    private List<User> friends;
+    private List<Integer> posts = new ArrayList<>();;
+    private List<Integer> subscribes = new ArrayList<>();;
 
     public User() {}
 
@@ -34,20 +30,12 @@ public class User {
         return password;
     }
 
-    public List<Post> getPosts() {
+    public List<Integer> getPosts() {
         return posts;
     }
 
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public List<Post> getLikes() {
-        return likes;
-    }
-
-    public List<User> getFriends() {
-        return friends;
+    public List<Integer> getSubscribes() {
+        return subscribes;
     }
 
     public void setID(int ID) {
@@ -66,29 +54,12 @@ public class User {
         this.password = password;
     }
 
-    public void setPosts(List<Post> posts) {
+    public void setPosts(List<Integer> posts) {
         this.posts = posts;
     }
 
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
-    }
-
-    public void setLikes(List<Post> likes) {
-        this.likes = likes;
-    }
-
-    public void setFriends(List<User> friends) {
-        this.friends = friends;
-    }
-
-    @JsonIgnore
-    public List<Integer> getFriendsID() {
-        List<Integer> IDs = new ArrayList<>();
-        for (User friend : friends) {
-            IDs.add(friend.getID());
-        }
-        return IDs;
+    public void setSubscribes(List<Integer> subscribes) {
+        this.subscribes = subscribes;
     }
 
 }

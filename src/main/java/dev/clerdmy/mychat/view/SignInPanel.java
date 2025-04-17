@@ -1,7 +1,6 @@
 package dev.clerdmy.mychat.view;
 
-import dev.clerdmy.mychat.storage.UserService;
-import dev.clerdmy.mychat.utils.ValidationUtils;
+import dev.clerdmy.mychat.session.SessionManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,9 +20,9 @@ public class SignInPanel extends JPanel {
         gbc.gridy = 0;
         gbc.fill = GridBagConstraints.BOTH;
         gbc.anchor = GridBagConstraints.CENTER;
-        gbc.insets = new Insets(30, 0, 30, 0);
+        gbc.insets = new Insets(GUIConstants.TEXT_INSETS * 3, 0, GUIConstants.TEXT_INSETS * 3, 0);
 
-        Dimension fieldSize = new Dimension(250, 40);
+        Dimension fieldSize = new Dimension(GUIConstants.TEXT_FIELD_FRAME_WIDTH, GUIConstants.SQUARE);
 
         JLabel myChat = new JLabel("myChat");
 
@@ -35,12 +34,12 @@ public class SignInPanel extends JPanel {
 
         gbc.weighty = 0.0;
         gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.insets = new Insets(5, 0, 5, 0);
+        gbc.insets = new Insets(GUIConstants.TEXT_INSETS / 2, 0, GUIConstants.TEXT_INSETS / 2, 0);
 
         JLabel hint = new JLabel("");
 
         hint.setForeground(GUIConstants.WHITE);
-        hint.setPreferredSize(new Dimension(210, 20));
+        hint.setPreferredSize(new Dimension(GUIConstants.TEXT_FRAME_WIDTH, GUIConstants.SQUARE / 2));
         hint.setFont(GUIConstants.MAIN_FONT);
         hint.setHorizontalAlignment(SwingConstants.CENTER);
         gbc.gridy++;
@@ -51,7 +50,7 @@ public class SignInPanel extends JPanel {
         loginField.setForeground(GUIConstants.BLACK);
         loginField.setBackground(GUIConstants.WHITE);
         loginField.setPlaceholderColor(GUIConstants.LIGHTER_GRAY);
-        loginField.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        loginField.setBorder(BorderFactory.createEmptyBorder(GUIConstants.TEXT_INSETS / 2, GUIConstants.TEXT_INSETS, GUIConstants.TEXT_INSETS / 2, GUIConstants.TEXT_INSETS));
         loginField.setPreferredSize(fieldSize);
         loginField.setFont(GUIConstants.MAIN_FONT);
         loginField.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -63,7 +62,7 @@ public class SignInPanel extends JPanel {
         passwordField.setForeground(GUIConstants.BLACK);
         passwordField.setBackground(GUIConstants.WHITE);
         passwordField.setPlaceholderColor(GUIConstants.LIGHTER_GRAY);
-        passwordField.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        passwordField.setBorder(BorderFactory.createEmptyBorder(GUIConstants.TEXT_INSETS / 2, GUIConstants.TEXT_INSETS, GUIConstants.TEXT_INSETS / 2, GUIConstants.TEXT_INSETS));
         passwordField.setPreferredSize(fieldSize);
         passwordField.setFont(GUIConstants.MAIN_FONT);
         passwordField.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -76,7 +75,7 @@ public class SignInPanel extends JPanel {
         confirmPasswordField.setForeground(GUIConstants.BLACK);
         confirmPasswordField.setBackground(GUIConstants.WHITE);
         confirmPasswordField.setPlaceholderColor(GUIConstants.LIGHTER_GRAY);
-        confirmPasswordField.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
+        confirmPasswordField.setBorder(BorderFactory.createEmptyBorder(GUIConstants.TEXT_INSETS / 2, GUIConstants.TEXT_INSETS, GUIConstants.TEXT_INSETS / 2, GUIConstants.TEXT_INSETS));
         confirmPasswordField.setPreferredSize(fieldSize);
         confirmPasswordField.setFont(GUIConstants.MAIN_FONT);
         confirmPasswordField.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -103,9 +102,11 @@ public class SignInPanel extends JPanel {
                     hint.setText("Passwords do not match.");
                 } else {
                     try {
-                        UserService userService = new UserService();
-                        if (userService.login(loginField.getText(), passwordField.getText())) {
+                        if (SessionManager.login(loginField.getText(), passwordField.getText())) {
                             hint.setText("");
+                            loginField.setText("");
+                            passwordField.setText("");
+                            confirmPasswordField.setText("");
                             frame.showScreen("MainPanel");
                         } else {
                             hint.setText("Invalid login or password.");
@@ -123,7 +124,7 @@ public class SignInPanel extends JPanel {
         JLabel hyperLink = new JLabel("Don't have an account? Sign Up");
 
         hyperLink.setForeground(GUIConstants.WHITE);
-        hyperLink.setPreferredSize(new Dimension(210, 20));
+        hyperLink.setPreferredSize(new Dimension(GUIConstants.TEXT_FRAME_WIDTH, GUIConstants.SQUARE / 2));
         hyperLink.setFont(GUIConstants.MAIN_FONT);
         hyperLink.setHorizontalAlignment(SwingConstants.CENTER);
         hyperLink.addMouseListener(new MouseAdapter() {

@@ -11,6 +11,11 @@ public class GUIConstants {
     public static final int DEFAULT_WIDTH = 600;
     public static final int DEFAULT_HEIGHT = 600;
     public static final int SQUARE = 40;
+    public static final int TEXT_INSETS = 10;
+    public static final int TEXT_FRAME_WIDTH = 210;
+    public static final int TEXT_FIELD_FRAME_WIDTH = 250;
+    public static final int SCROLL_SIZE = 900;
+    public static final int SCROLL_BORDER = 45;
 
     public static final Font MAIN_FONT = new Font("Open Sans", Font.PLAIN, 14);
     public static final Font MAIN_FONT_LARGE = new Font("Open Sans", Font.PLAIN, 18);

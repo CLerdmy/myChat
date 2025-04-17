@@ -1,16 +1,17 @@
 package dev.clerdmy.mychat.model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Post {
 
     private int ID;
     private String content;
-    private User user;
+    private int ownerId;
+    private String ownerName;
     private LocalDateTime dateTime;
-    private List<Comment> comments;
-    private List<User> likes;
+    private List<Integer> likes = new ArrayList<>();
 
     public Post() {}
 
@@ -22,19 +23,15 @@ public class Post {
         return content;
     }
 
-    public User getUser() {
-        return user;
+    public int getOwnerId() {
+        return ownerId;
     }
 
     public LocalDateTime getDateTime() {
         return dateTime;
     }
 
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public List<User> getLikes() {
+    public List<Integer> getLikes() {
         return likes;
     }
 
@@ -46,20 +43,24 @@ public class Post {
         this.content = content;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setOwnerId(int ownerId) {
+        this.ownerId = ownerId;
     }
 
     public void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
     }
 
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
+    public void setLikes(List<Integer> likes) {
+        this.likes = likes;
     }
 
-    public void setLikes(List<User> likes) {
-        this.likes = likes;
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
     }
 
 }

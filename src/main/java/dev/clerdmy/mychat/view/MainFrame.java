@@ -2,18 +2,20 @@ package dev.clerdmy.mychat.view;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class MainFrame extends JFrame {
 
     private final CardLayout cardLayout;
     private final JPanel panel;
 
-    public MainFrame() {
+    public MainFrame() throws IOException {
 
         setUndecorated(false);
-        setSize(600, 600);
+        setSize(GUIConstants.DEFAULT_WIDTH, GUIConstants.DEFAULT_HEIGHT);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setMinimumSize(new Dimension(GUIConstants.MIN_WIDTH, GUIConstants.MIN_HEIGHT));
 
         cardLayout = new CardLayout();
         panel = new JPanel(cardLayout);
