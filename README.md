@@ -1,5 +1,6 @@
 myChat is a desktop app where users can create posts and follow other users.  
 Uses *Swing* for the user interface and *Jackson* to save data in JSON files.  
+![interface](assets/interface.gif)
 ## Main features
 - User registration and login
 - Edit profile
